@@ -1,0 +1,279 @@
+
+
+npx create-next-app@latest my-profile
+cd my-profile
+
+
+npx create-next-app@latest my-profile
+cd my-profile
+
+
+import styles from './Header.module.css';
+
+const Header = () => (
+    <header className={styles.header}>
+        <img src="/perfil.jpg" alt="Imagen de perfil" className={styles.profileImg} />
+        <h1 className={styles.username}>Nombre del Usuario</h1>
+    </header>
+);
+
+export default Header;
+
+
+
+import styles from './Header.module.css';
+
+const Header = () => (
+    <header className={styles.header}>
+        <img src="/perfil.jpg" alt="Imagen de perfil" className={styles.profileImg} />
+        <h1 className={styles.username}>Nombre del Usuario</h1>
+    </header>
+);
+
+export default Header;
+
+
+
+import styles from './About.module.css';
+
+const About = () => (
+    <section className={styles.about}>
+        <h2>Sobre mí</h2>
+        <p>Breve descripción del usuario.</p>
+    </section>
+);
+
+export default About;
+
+
+
+
+import styles from './Interests.module.css';
+
+const Interests = () => (
+    <section className={styles.interests}>
+        <h2>Intereses</h2>
+        <ul>
+            <li>Interés 1</li>
+            <li>Interés 2</li>
+            <li>Interés 3</li>
+        </ul>
+    </section>
+);
+
+export default Interests;
+
+
+
+import { useState } from 'react';
+import styles from './ContactForm.module.css';
+
+const ContactForm = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const [success, setSuccess] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setSuccess(true);
+    };
+
+    return (
+        <section className={styles.contact}>
+            <h2>Contacto</h2>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="name">Nombre:</label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    value={name} 
+                    onChange={(e) => setName(e.target.value)} 
+                    required 
+                />
+                <label htmlFor="email">Email:</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    value={email} 
+                    onChange={(e) => setEmail(e.target.value)} 
+                    required 
+                />
+                <label htmlFor="message">Mensaje:</label>
+                <textarea 
+                    id="message" 
+                    name="message" 
+                    value={message} 
+                    onChange={(e) => setMessage(e.target.value)} 
+                    required 
+                ></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+            {success && <p>Mensaje enviado con éxito!</p>}
+        </section>
+    );
+};
+
+export default ContactForm;
+
+
+
+import Header from '../components/Header';
+import About from '../components/About';
+import Interests from '../components/Interests';
+import ContactForm from '../components/ContactForm';
+
+const Home = () => (
+    <div>
+        <Header />
+        <About />
+        <Interests />
+        <ContactForm />
+    </div>
+);
+
+export default Home;
+
+
+
+
+
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+.profileImg {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.username {
+    margin-top: 10px;
+}
+
+
+
+.about {
+    margin: 20px 0;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+
+
+.interests {
+    margin: 20px 0;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+
+
+.contact {
+    margin: 20px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input, textarea {
+    padding: 10px;
+    margin-top: 5px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+
+
+
+
+npm install --save-dev jest @testing-library/react @testing-library/jest-dom
+
+
+
+import { render, screen } from '@testing-library/react';
+import Home from '../pages/index';
+
+describe('Home', () => {
+    it('renders a heading', () => {
+        render(<Home />);
+        const heading = screen.getByRole('heading', { name: /Nombre del Usuario/i });
+        expect(heading).toBeInTheDocument();
+    });
+});
+
+
+
+
+
+
+# Mi Perfil
+
+Este es un proyecto de perfil de usuario creado con Next.js 14.
+
+## Instalación
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/mi-perfil.git
+
+
+
+cd mi-perfil
+
+
+npm install
+
+
+
+npm run dev
+
+
+Pruebas Para ejecutar las pruebas:
+
+
+npm test
